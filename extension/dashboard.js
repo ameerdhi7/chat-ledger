@@ -179,7 +179,7 @@ function render() {
       data-tip="${esc(d.key || d.label)} · ${fmt(d.total)} ${CUR} · ${d.count} payments"></div>`).join('')}</div>
       <div class="axis">${data.map((d, i) => `<span>${data.length > 20 && i % 2 ? '' : d.label}</span>`).join('')}</div>`;
   };
-  const list = (items, total) => items.length ? items.slice(0, 8).map((r) => `<div class="row"><span class="n">${esc(r.name)} <span class="mute">· ${r.count}×</span></span>
+  const list = (items, total) => items.length ? items.slice(0, 8).map((r) => `<div class="row"><span class="n"><bdi>${esc(r.name)}</bdi> <span class="mute">· ${r.count}×</span></span>
     <span class="a">${A(r.total)}</span><div class="track"><i style="width:${(r.total / total) * 100}%"></i></div></div>`).join('') : '<div class="mute">Nothing this month.</div>';
 
   const budget = S.budget || 0, left = budget - monthTotal, pct = budget ? (monthTotal / budget) * 100 : 0;
@@ -227,13 +227,13 @@ function render() {
     <div class="grid two">
       <div class="card"><h2>By weekday</h2>${bars(wd, () => false)}</div>
       <div class="card"><h2>Biggest payments</h2>
-        ${biggest.map((t) => `<div class="row"><span class="n">${esc(t.merchant || t.provider)} <span class="mute">· ${t.date.slice(5)}</span></span><span class="a">${A(t.amount)}</span></div>`).join('') || '<div class="mute">—</div>'}
+        ${biggest.map((t) => `<div class="row"><span class="n"><bdi>${esc(t.merchant || t.provider)}</bdi> <span class="mute">· ${t.date.slice(5)}</span></span><span class="a">${A(t.amount)}</span></div>`).join('') || '<div class="mute">—</div>'}
       </div>
     </div>
     <div class="grid two">
       <div class="card"><h2>By provider</h2>${list(byProvider, monthTotal)}</div>
       <div class="card"><h2>Money in</h2>
-        ${inflows.length ? inflows.map((f) => `<div class="row"><span class="n">${f.date.slice(5)} ${ptag(f.provider)} <span class="mute">${esc(f.what)}</span></span><span class="a in">+${A(f.amount)}</span></div>`).join('') : '<div class="mute">No money in this month.</div>'}
+        ${inflows.length ? inflows.map((f) => `<div class="row"><span class="n">${f.date.slice(5)} ${ptag(f.provider)} <span class="mute"><bdi>${esc(f.what)}</bdi></span></span><span class="a in">+${A(f.amount)}</span></div>`).join('') : '<div class="mute">No money in this month.</div>'}
       </div>
     </div>
 
@@ -242,7 +242,7 @@ function render() {
         <input id="q" placeholder="Search merchant, category, provider…" value="${esc(query)}"><button id="csv" class="ghost">Export CSV</button></div>
       <div class="tablewrap"><table>
         <thead><tr><th>Date</th><th>Time</th><th>Provider</th><th>Merchant</th><th>Category</th><th class="num">Amount</th><th class="num">Balance</th></tr></thead>
-        <tbody>${rows.map((t) => `<tr><td>${t.date}</td><td class="mute">${t.time}</td><td>${ptag(t.provider)}</td><td title="${esc(t.raw)}">${esc(t.merchant)} <span class="mute">${esc(t.city)}</span></td>
+        <tbody>${rows.map((t) => `<tr><td>${t.date}</td><td class="mute">${t.time}</td><td>${ptag(t.provider)}</td><td title="${esc(t.raw)}"><bdi>${esc(t.merchant)}</bdi> <span class="mute">${esc(t.city)}</span></td>
           <td>${t.type === 'credit' ? '<span class="tag in">Money in</span>' : `<span class="tag">${t.cat}</span>`}</td>
           <td class="num ${t.type === 'credit' ? 'in' : ''}">${t.type === 'credit' ? '+' : ''}${A(t.amount)}</td><td class="num mute">${t.balance == null ? '—' : A(t.balance)}</td></tr>`).join('')}</tbody>
       </table></div>
