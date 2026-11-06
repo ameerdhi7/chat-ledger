@@ -9,6 +9,21 @@ transaction is tagged with the provider it came from.
 No account, no server, no AI, no network: the extension can't connect to anything except WhatsApp Web, and
 nothing leaves your computer.
 
+> [!IMPORTANT]
+> **You tell it which chats to read.** Chat Ledger doesn't guess: it only opens the chats you add.
+> Type each provider's chat name **exactly as it appears in WhatsApp** (for example `Tabadul`, `Qi Card`,
+> `ZainCash`, or your bank's name), plus an optional tag for the dashboard.
+
+> [!TIP]
+> **Add as many providers as you like, whenever you like.** There's a place for it on the welcome screen, and later
+> in **⚙︎ Settings → Chats**: fill in *Chat name* and *Tag*, then click **Add chat**. A new chat starts syncing
+> straight away if WhatsApp Web is open. Use **Remove** to stop tracking one.
+
+| Field | What to type | Example |
+|---|---|---|
+| Chat name | The chat's name in your WhatsApp chat list | `Tabadul` |
+| Tag *(optional)* | The provider label shown on the dashboard (defaults to the chat name) | `Tabadul card` |
+
 ![Dashboard](docs/dashboard.png)
 ![By provider and transactions](docs/providers.png)
 
@@ -38,7 +53,7 @@ first**). Or add a template to `PROVIDERS` and send a PR.
 ## Install (developer mode)
 1. Download or clone this repo.
 2. Open `chrome://extensions`, turn on **Developer mode**, click **Load unpacked** and pick the `extension/` folder.
-3. On the welcome screen, add your chat names, then open [WhatsApp Web](https://web.whatsapp.com) in the same browser.
+3. On the welcome screen, **add each provider's chat name** (you can add more later in ⚙︎ Settings → Chats), then open [WhatsApp Web](https://web.whatsapp.com) in the same browser.
    A small pill in the bottom-left shows sync progress, and the dashboard fills in by itself.
 
 ## Privacy
