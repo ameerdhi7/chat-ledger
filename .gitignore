@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.try-profile/
+.DS_Store
+docs/chats.png

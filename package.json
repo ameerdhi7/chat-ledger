@@ -1,0 +1,14 @@
+{
+  "name": "chat-ledger",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Chrome extension: one private spending dashboard from the transaction alerts your banks and wallets send to WhatsApp.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "screenshots": "node scripts/screenshots.mjs",
+    "zip": "cd extension && zip -qr ../dist/chat-ledger-$npm_package_version.zip . -x '.*'"
+  },
+  "devDependencies": { "playwright": "^1.65.0" }
+}
